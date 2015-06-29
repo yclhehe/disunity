@@ -22,3 +22,6 @@ release.properties
 
 # Other
 private/
+.DS_Store
+*.iml
+.idea/
