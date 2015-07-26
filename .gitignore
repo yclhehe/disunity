@@ -21,7 +21,12 @@ dependency-reduced-pom.xml
 release.properties
 
 # Other
+<<<<<<< HEAD
 private/
 .DS_Store
 *.iml
 .idea/
+=======
+private/
+>>>>>>> 623edb4c109259c6ef4e79c4de3e04bd4b1242f2
+.DS_Store
