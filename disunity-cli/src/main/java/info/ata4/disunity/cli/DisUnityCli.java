@@ -26,6 +26,8 @@ import info.ata4.disunity.cli.command.ListCommand;
 import info.ata4.log.LogUtils;
 import info.ata4.unity.DisUnity;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -129,8 +131,7 @@ public class DisUnityCli implements Runnable {
         DisUnityCli cli = new DisUnityCli();
         args = new String[2];
         args[0] = "extract";
-        args[1] = "/Users/shuuseiyang/Documents/workspace/unity3d/111/assets/bin/Data/level1";
-
+        args[1] = "/Users/shuuseiyang/Documents/workspace/unity3d/efcc/";
         try {
             cli.parse(args);
             cli.run();
@@ -139,5 +140,30 @@ public class DisUnityCli implements Runnable {
         } catch (Throwable t) {
             L.log(Level.SEVERE, "Fatal error", t);
         }
+//        File file = new File(args[1]);
+//        if (file.isDirectory()) {
+//            for (String filename : file.list()) {
+//                args[1] = file.getAbsolutePath() + File.separator + filename;
+//                try {
+//                    cli.parse(args);
+//                    cli.run();
+//                } catch (ParameterException ex) {
+//                    L.log(Level.WARNING, "Parameter error: {0}", ex.getMessage());
+//                } catch (Throwable t) {
+//                    L.log(Level.SEVERE, "Fatal error", t);
+//                }
+//            }
+//
+//        } else {
+//            try {
+//                cli.parse(args);
+//                cli.run();
+//            } catch (ParameterException ex) {
+//                L.log(Level.WARNING, "Parameter error: {0}", ex.getMessage());
+//            } catch (Throwable t) {
+//                L.log(Level.SEVERE, "Fatal error", t);
+//            }
+//        }
     }
+
 }

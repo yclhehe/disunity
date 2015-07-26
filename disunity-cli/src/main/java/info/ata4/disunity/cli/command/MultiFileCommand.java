@@ -47,9 +47,13 @@ public abstract class MultiFileCommand extends FileCommand {
                 L.log(Level.WARNING, "File not found: {0}", filePath);
                 continue;
             }
+            if("".equals(name)|| name == null){
+                name = "*";
+            }
 
             try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(dir, name)) {
                 for (Path subFile : dirStream) {
+                    L.log(Level.WARNING,subFile.toString());
                     if (Files.isRegularFile(subFile)) {
                         processFile(subFile);
                     }
