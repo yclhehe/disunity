@@ -11,6 +11,7 @@ package info.ata4.disunity.cli.command;
 
 import com.beust.jcommander.Parameter;
 import info.ata4.log.LogUtils;
+
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -19,19 +20,19 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 
 /**
- *
  * @author Nico Bergemann <barracuda415 at yahoo.de>
  */
 public abstract class MultiFileCommand extends FileCommand {
-    
+
     private static final Logger L = LogUtils.getLogger();
-    
+
     @Parameter(
-        description = "<file> [file]...",
-        required = true
+            description = "<file> [file]...",
+            required = true
     )
     private List<String> filePaths;
 
@@ -42,30 +43,23 @@ public abstract class MultiFileCommand extends FileCommand {
             String path = FilenameUtils.getFullPath(filePath);
 
             Path dir = Paths.get(path);
-            
+
             if (!Files.isDirectory(dir)) {
                 L.log(Level.WARNING, "File not found: {0}", filePath);
                 continue;
             }
-<<<<<<< HEAD
-            if("".equals(name)|| name == null){
+            if ("".equals(name) || name == null) {
                 name = "*";
             }
 
             try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(dir, name)) {
                 for (Path subFile : dirStream) {
-                    L.log(Level.WARNING,subFile.toString());
-=======
-
-            try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(dir, name)) {
-                for (Path subFile : dirStream) {
->>>>>>> 623edb4c109259c6ef4e79c4de3e04bd4b1242f2
                     if (Files.isRegularFile(subFile)) {
                         processFile(subFile);
                     }
                 }
             } catch (IOException ex2) {
-                L.log(Level.WARNING, "Can't open directory " + dir, ex2); 
+                L.log(Level.WARNING, "Can't open directory " + dir, ex2);
             }
         }
     }
